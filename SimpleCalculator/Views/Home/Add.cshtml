@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Simple Calculator</h2>
+
+<form action="Add" method="post">
+    <table>
+        <tr>
+            <td><input type="text" name="numbers" /></td>
+            <td><input type="submit" value="Add" /></td>
+        </tr>
+        <tr>
+            <td>@ViewBag.Result</td>
+        </tr>
+
+    </table>
+    <p>@ViewBag.Message</p>
+
+</form>
+

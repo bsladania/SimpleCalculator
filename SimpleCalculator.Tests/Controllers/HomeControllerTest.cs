@@ -12,43 +12,63 @@ namespace SimpleCalculator.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
+
+        HomeController controller = new HomeController();
+
         [TestMethod]
-        public void Index()
+        public void SimpleAddition()
         {
             // Arrange
-            HomeController controller = new HomeController();
-
+            
+            int ExpectedResult = 8;
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            int ActualResult = controller.Addition("1,2,5");
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(ExpectedResult,ActualResult);
         }
 
         [TestMethod]
-        public void About()
+        public void AdditionWithNewLine()
         {
             // Arrange
-            HomeController controller = new HomeController();
 
+            int ExpectedResult = 6;
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            int ActualResult = controller.Addition("1\n,2,3");
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.AreEqual(ExpectedResult, ActualResult);
         }
 
         [TestMethod]
-        public void Contact()
+        public void AdditionWithNumbersLessThan1000()
         {
             // Arrange
-            HomeController controller = new HomeController();
 
+            int ExpectedResult = 2;
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            int ActualResult = controller.Addition("2,1001");
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(ExpectedResult, ActualResult);
         }
+
+        [TestMethod]
+        public void AdditionWithNegativeNumber()
+        {
+            // Arrange
+
+            int ExpectedResult = 0;
+            // Act
+            int ActualResult = controller.Addition("2,4,6-7");
+
+            // Assert
+            Assert.AreEqual(ExpectedResult, ActualResult);
+        }
+
+       
+
+
     }
 }
